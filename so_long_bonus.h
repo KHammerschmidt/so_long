@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 14:35:10 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/21 16:31:10 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/22 23:09:29 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ typedef struct map_coordinates
 	int		*e_pos_y;
 	int		*e_pos_x_last;
 	int		*e_pos_y_last;
-	int		*e_pos_x_next;
-	int		*e_pos_y_next;
 	int		*keycode_enemy;
 	int		enemy_moved;
 }				t_map;
@@ -119,6 +117,9 @@ int		main(int argc, char **argv);
 int		ft_handle_input(int argc, char **argv);
 int		key_hook(int keycode, t_struct *so_long);
 void	ft_game_instructions(t_struct *so_long);
+void	ft_image_handling(t_struct *so_long);
+void	ft_load_images(t_struct *so_long);
+void	ft_load_player_images(t_struct *so_long);
 
 /* Functions to read, allocate and define map, e.g. the gamefiled */
 void	ft_map_init(t_struct *so_long);
@@ -170,7 +171,11 @@ void	ft_change_enemy_position(t_map *game, int p);
 int		ft_check_enemy_collision(t_struct *so_long);
 void	ft_read_enemy_positions(t_struct *so_long);
 void	ft_enemy_position(t_struct *so_long, int i);
-void	ft_move_enemy_back(t_map *game);
-void	ft_support_enemy_move(t_map *game);
+void	ft_update_map_enemy(t_map *game, int p, int t, int s);
+
+int	ft_check_e_move_west(t_map *game, int p);
+int	ft_check_e_move_south(t_map *game, int p);
+int	ft_check_e_move_east(t_map *game, int p);
+int	ft_check_e_move_north(t_map *game, int p);
 
 #endif

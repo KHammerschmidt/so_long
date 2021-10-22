@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 14:35:10 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/19 18:38:50 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/22 23:07:04 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,9 @@ int		main(int argc, char **argv);
 int		ft_handle_input(int argc, char **argv);
 int		key_hook(int keycode, t_struct *so_long);
 void	ft_game_instructions(t_struct *so_long);
+void	ft_image_handling(t_struct *so_long);
+void	ft_load_images(t_struct *so_long);
+void	ft_load_player_images(t_struct *so_long);
 
 /* Functions to read, allocate and define map, e.g. the gamefiled */
 void	ft_map_init(t_struct *so_long);

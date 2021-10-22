@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 09:37:19 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/21 15:47:04 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/22 22:24:18 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ void	ft_game_init(t_struct *so_long)
 
 	p = 0;
 	so_long->vars.img_size = 64;
-	so_long->vars.window_width = so_long->vars.img_size * so_long->game.map_width;
-	so_long->vars.window_height = so_long->vars.img_size * so_long->game.map_height;
+	so_long->vars.window_width = so_long->vars.img_size
+		* so_long->game.map_width;
+	so_long->vars.window_height = so_long->vars.img_size
+		* so_long->game.map_height;
 	so_long->vars.window_mid_width = (so_long->vars.window_width / 2);
 	so_long->vars.window_mid_height = (so_long->vars.window_height / 2);
 	so_long->player.number_of_moves = 0;

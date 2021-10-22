@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 09:37:19 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/21 16:25:31 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/22 22:54:28 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void	ft_read_enemy_positions(t_struct *so_long)
 	p = 0;
 	while (p < so_long->game.counter_enemy)
 	{
-		so_long->game.e_pos_x_last[p] = so_long->game.e_pos_x[p];
-		so_long->game.e_pos_y_last[p] = so_long->game.e_pos_y[p];
 		y = 0;
 		while (y < (so_long->game.map_height))
 		{
@@ -52,8 +50,6 @@ void	ft_e_memory_allocation(t_map *game)
 	game->e_pos_y = ft_calloc(game->counter_enemy + 1, (sizeof(int)));
 	game->e_pos_x_last = ft_calloc(game->counter_enemy + 1, (sizeof(int)));
 	game->e_pos_y_last = ft_calloc(game->counter_enemy + 1, (sizeof(int)));
-	game->e_pos_x_next = ft_calloc(game->counter_enemy + 1, (sizeof(int)));
-	game->e_pos_y_next = ft_calloc(game->counter_enemy + 1, (sizeof(int)));
 	game->keycode_enemy = ft_calloc((game->counter_enemy + 1), (sizeof(int)));
 }
 
@@ -87,12 +83,11 @@ allocates memory space for struct t_enemy and saves the respective enemy
 positions. */
 void	ft_game_init(t_struct *so_long)
 {
-	int	p;
-
-	p = 0;
 	so_long->vars.img_size = 64;
-	so_long->vars.window_width = so_long->vars.img_size * so_long->game.map_width;
-	so_long->vars.window_height = so_long->vars.img_size * so_long->game.map_height;
+	so_long->vars.window_width = so_long->vars.img_size
+		* so_long->game.map_width;
+	so_long->vars.window_height = so_long->vars.img_size
+		* so_long->game.map_height;
 	so_long->vars.window_mid_width = (so_long->vars.window_width / 2);
 	so_long->vars.window_mid_height = (so_long->vars.window_height / 2);
 	so_long->player.number_of_moves = 0;

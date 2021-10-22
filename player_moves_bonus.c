@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 19:41:50 by katharinaha       #+#    #+#             */
-/*   Updated: 2021/10/21 17:18:48 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/22 22:06:04 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	ft_check_p_move(t_struct *so_long, int j, int i)
 	|| (so_long->keyboard == KEY_S && so_long->game.map[j + 1][i] != '1')
 	|| (so_long->keyboard == KEY_W && so_long->game.map[j - 1][i] != '1'))
 	{
+		ft_enemy_movement(&so_long->game);
 		if ((so_long->keyboard == KEY_D && so_long->game.map[j][i + 1] == 'G')
 		|| (so_long->keyboard == KEY_A && so_long->game.map[j][i - 1] == 'G')
 		|| (so_long->keyboard == KEY_S && so_long->game.map[j + 1][i] == 'G')
@@ -57,8 +58,6 @@ int	ft_check_p_move(t_struct *so_long, int j, int i)
 			return (-1);
 		ft_change_position(so_long, j, i);
 	}
-	else if (so_long->game.enemy_moved == 1)
-		ft_move_enemy_back(&so_long->game);
 	return (0);
 }
 
@@ -74,26 +73,22 @@ int	ft_check_enemy_collision(t_struct *so_long)
 	{
 		if (so_long->player.player_position_y == so_long->game.e_pos_y[p]
 		&& so_long->player.player_position_x == so_long->game.e_pos_x[p])
+			so_long->player.enemy_flag = 99;
+		if (so_long->player.player_position_y == so_long->game.e_pos_y_last[p]
+		&& so_long->player.player_position_x == so_long->game.e_pos_x_last[p])
 		{
-			printf("player moves into enemy!\n");
-			so_long->player.enemy_flag = 99;
-		}
-		if ((so_long->game.e_pos_y[p] == so_long->player.player_position_last_y
-		&& so_long->game.e_pos_x[p] == so_long->player. player_position_last_x)
-		&& so_long->game.e_pos_y_last[p] == so_long->player.player_position_y
-		&& so_long->game.e_pos_y_last[p] == so_long->player.player_position_x)
+			if (so_long->player.player_position_last_y == so_long->game.e_pos_y[p]
+				&& so_long->player.player_position_last_x == so_long->game.e_pos_x[p])
 			{
-			printf("player and enemy move into each other!\n");
-			so_long->player.enemy_flag = 99;
+				so_long->game.map[so_long->player.player_position_y][so_long->player.player_position_x] = 'G';
+				so_long->game.map[so_long->player.player_position_last_y][so_long->player.player_position_last_x] = 'P';
+					so_long->player.enemy_flag = 99;
+			}
 		}
 		p++;
 	}
 	if (so_long->player.enemy_flag == 99)
-	{
-		// ft_move_enemy_back(&so_long->game);
 		return (-1);
-	}
-	ft_support_enemy_move(&so_long->game);
 	return (0);
 }
 
@@ -141,7 +136,6 @@ int	ft_move(t_struct *so_long, int keycode)
 	{
 		j = so_long->player.player_position_y;
 		i = so_long->player.player_position_x;
-
 		if (ft_check_game_over(so_long, j, i) == -1)			//next move is into 'E"
 			return (-1);
 		if (ft_check_p_move(so_long, j, i) == 0)				//is there a wall? is there a "G" or 'C'?
@@ -155,3 +149,23 @@ int	ft_move(t_struct *so_long, int keycode)
 	}
 	return (0);
 }
+
+
+
+
+		// if (so_long->game.e_pos_y_last = so_long->player.player_position_last_y
+		// && so_long->game.e_pos_x_last = so_long->player.player_position_last_x)
+		// (so_long->player.player_position_y == so_long->game.e_pos_y[p]
+		// && so_long->player.player_position_x == so_long->game.e_pos_x[p])
+		// {
+		// 	printf("player moves into enemy!\n");
+		// 	so_long->player.enemy_flag = 99;
+		// }
+		// if ((so_long->game.e_pos_y[p] == so_long->player.player_position_last_y
+		// && so_long->game.e_pos_x[p] == so_long->player. player_position_last_x)
+		// && so_long->game.e_pos_y_last[p] == so_long->player.player_position_y
+		// && so_long->game.e_pos_y_last[p] == so_long->player.player_position_x)
+		// 	{
+		// 	printf("player and enemy move into each other!\n");
+		// 	so_long->player.enemy_flag = 99;
+		// }

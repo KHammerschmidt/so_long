@@ -6,43 +6,11 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:34:56 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/19 18:43:02 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/22 23:04:25 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/* Memory area is allocated for every mlx_file. The corresponding img-array is
-linked to the xpm_file. */
-void	ft_load_images(t_struct *so_long)
-{
-	so_long->img[0] = ft_calloc(1, sizeof(t_img));
-	so_long->img[0]->img = mlx_xpm_file_to_image(so_long->vars.mlx,
-			IMG_TILE_MUD, &(so_long->img[0]->width),
-			&(so_long->img[0]->height));
-	so_long->img[1] = ft_calloc(1, sizeof(t_img));
-	so_long->img[1]->img = mlx_xpm_file_to_image(so_long->vars.mlx, IMG_WALL,
-			&(so_long->img[1]->width), &(so_long->img[1]->height));
-	so_long->img[2] = ft_calloc(1, sizeof(t_img));
-	so_long->img[2]->img = mlx_xpm_file_to_image(so_long->vars.mlx,
-			IMG_COLLECTIBLE, &(so_long->img[2]->width),
-			&(so_long->img[2]->height));
-	so_long->img[3] = ft_calloc(1, sizeof(t_img));
-	so_long->img[3]->img = mlx_xpm_file_to_image(so_long->vars.mlx, IMG_EXIT,
-			&(so_long->img[3]->width), &(so_long->img[3]->height));
-	so_long->img[4] = ft_calloc(1, sizeof(t_img));
-	so_long->img[4]->img = mlx_xpm_file_to_image(so_long->vars.mlx, IMG_W_EAST,
-			&(so_long->img[4]->width), &(so_long->img[4]->height));
-	so_long->img[5] = ft_calloc(1, sizeof(t_img));
-	so_long->img[5]->img = mlx_xpm_file_to_image(so_long->vars.mlx, IMG_D_EAST,
-			&(so_long->img[5]->width), &(so_long->img[5]->height));
-	so_long->img[6] = ft_calloc(1, sizeof(t_img));
-	so_long->img[6]->img = mlx_xpm_file_to_image(so_long->vars.mlx, IMG_W_WEST,
-			&(so_long->img[6]->width), &(so_long->img[6]->height));
-	so_long->img[7] = ft_calloc(1, sizeof(t_img));
-	so_long->img[7]->img = mlx_xpm_file_to_image(so_long->vars.mlx, IMG_D_WEST,
-			&(so_long->img[7]->width), &(so_long->img[7]->height));
-}
 
 /* While the player is still playing this function returns the player facing
 in a direction, depending on the key pressed now and the previous one. */
@@ -134,8 +102,8 @@ void	ft_build_map(t_struct *so_long)
 					so_long->vars.mlx_win, so_long->img[0]->img,
 					so_long->vars.img_size * x, so_long->vars.img_size * y);
 			mlx_put_image_to_window(so_long->vars.mlx, so_long->vars.mlx_win,
-					ft_which_img(so_long, x, y), so_long->vars.img_size * x,
-					so_long->vars.img_size * y);
+				ft_which_img(so_long, x, y), so_long->vars.img_size * x,
+				so_long->vars.img_size * y);
 			x++;
 		}
 		y++;

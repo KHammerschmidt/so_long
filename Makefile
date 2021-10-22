@@ -6,7 +6,7 @@
 #    By: khammers <khammers@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/22 14:33:38 by khammers          #+#    #+#              #
-#    Updated: 2021/10/21 15:53:01 by khammers         ###   ########.fr        #
+#    Updated: 2021/10/22 23:03:57 by khammers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC = main.c \
 	map_build.c \
 	keyhook.c \
 	init_game.c \
-	end_game.c
+	end_game.c \
+	window_image_handling.c
 
 SRC_B = main_bonus.c \
 	input_handling_bonus.c \
@@ -35,6 +36,8 @@ SRC_B = main_bonus.c \
 	init_game_bonus.c \
 	end_game_bonus.c \
 	enemy_move_bonus.c \
+	enemy_check_direction_bonus.c \
+	window_image_handling_bonus.c
 
 LIBFT_OBJ = ./srcs/libft/libft.a
 MLX = ./srcs/mlx/libmlx.a

@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 19:45:37 by katharinaha       #+#    #+#             */
-/*   Updated: 2021/10/19 20:48:49 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/22 22:23:40 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,16 @@ void	ft_free_gamefield(t_struct *so_long)
 
 void	ft_free_enemies(t_map *game)
 {
-		free (game->e_pos_x);
-		game->e_pos_x = NULL;
-		free (game->e_pos_y);
-		game->e_pos_y = NULL;
-		free (game->e_pos_x_last);
-		game->e_pos_x_last = NULL;
-		free (game->e_pos_y_last);
-		game->e_pos_y_last = NULL;
-		free (game->keycode_enemy);
-		game->keycode_enemy = NULL;
+	free (game->e_pos_x);
+	game->e_pos_x = NULL;
+	free (game->e_pos_y);
+	game->e_pos_y = NULL;
+	free (game->e_pos_x_last);
+	game->e_pos_x_last = NULL;
+	free (game->e_pos_y_last);
+	game->e_pos_y_last = NULL;
+	free (game->keycode_enemy);
+	game->keycode_enemy = NULL;
 }
 
 /* Called when the game is over to free all memory area (images, gamefield
@@ -77,4 +77,3 @@ int	ft_close(t_struct *so_long)
 	exit(0);
 	return (0);
 }
-
