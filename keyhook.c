@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 17:29:32 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/21 10:58:21 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/24 08:30:25 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ int	key_hook(int keycode, t_struct *so_long)
 		if (ft_move(so_long, keycode) == (-1))
 			ft_game_over(so_long);
 	}
+	ft_game_instructions(so_long);
 	return (0);
 }

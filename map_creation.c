@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:32:35 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/19 18:36:14 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/24 08:35:46 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,15 @@ system. Reading with a nested loop row per row for every column of .ber file.
 In between each gnl call the char * is freed. */
 void	ft_read_map_grid(char *file, t_struct *so_long)
 {
-	int		fd;
-	int long		x;
-	int long		y;
-	char	*horizontal_line;
+	int			fd;
+	int long	x;
+	int long	y;
+	char		*horizontal_line;
 
+	y = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1 || fd == 0)
 		ft_close(so_long);
-	y = 0;
-	x = 0;
 	horizontal_line = ft_calloc(so_long->game.map_width + 1, sizeof(char));
 	if (!horizontal_line)
 		ft_close(so_long);

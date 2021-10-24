@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 19:54:45 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/22 22:49:54 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/24 11:48:17 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,44 @@ void	ft_update_map_enemy(t_map *game, int p, int t, int s)
 		game->map[t - 1][s] = 'G';
 }
 
+void	ft_reset_enemy_last_position(t_map *game, int p, int t, int s)
+{
+	int	i;
+	int	epy_last;
+	int	epx_last;
+
+	i = 0;
+	while (i < game->counter_enemy)
+	{
+		epy_last = game->e_pos_y_last[i];
+		epx_last = game->e_pos_x_last[i];
+		if (game->e_pos_y_last[i] == t && game->e_pos_x_last[i] == s)
+		{
+			if (game->e_pos_y[i] == game->e_pos_y_last[p] && game->e_pos_x[i] == game->e_pos_x_last[p])
+			{
+				game->map[t][s] = 'G';
+				game->map[epy_last][epx_last] = 'G';
+				game->e_pos_y[i] = epy_last;
+				game->e_pos_x[i] = epx_last;
+			}
+		}
+		else
+			game->map[t][s] = '0';
+		i++;
+		if (i == p)
+			i++;
+	}
+}
+
 /* Sets the position of the enemys based on their random move. Also saves
 the last enemy position. */
 void	ft_next_enemy_position(t_map *game, int p)
 {
 	int	t;
 	int	s;
-
 	t = game->e_pos_y[p];
 	s = game->e_pos_x[p];
-	game->map[t][s] = '0';
+	ft_reset_enemy_last_position(game, p, t, s);
 	game->e_pos_y_last[p] = game->e_pos_y[p];
 	game->e_pos_x_last[p] = game->e_pos_x[p];
 	if (game->keycode_enemy[p] == KEY_D)
@@ -56,7 +84,7 @@ int	ft_generate_e_move(t_map *game, int p)
 	int	move_indicator;
 
 	nbr = rand();
-	move_indicator = nbr % 4;
+	move_indicator = nbr % 4;						// random number is generated, %4 defines the four directions of movement
 	if (move_indicator == 3)
 		return (ft_check_e_move_east(game, p));
 	if (move_indicator == 2)
@@ -76,23 +104,23 @@ ft_change_enemy_position(). */
 void	ft_enemy_movement(t_map *game)
 {
 	int	p;
-	int	flag;
-	int	e_move;
+	int	flag;										// each enemy move is tested only 4 times, in case enemy cannot move and to prevent an infinite loop
+	int	e_move;										// == 0 -> enemy can move || == -1 --> enemy cannot move into this direction
 
 	p = 0;
-	while (p < game->counter_enemy)
+	while (p < game->counter_enemy)					// for every enemy
 	{
 		flag = 0;
-		e_move = 5;
+		e_move = 5;									// to enter while loop
 		while (e_move != 0 && flag != 4)
 		{
-			e_move = ft_generate_e_move(game, p);
+			e_move = ft_generate_e_move(game, p);	// returns either 0 or -1
 			flag++;
 		}
 		if (flag == 4)
-			game->keycode_enemy[p] = 99;
+			game->keycode_enemy[p] = 99;			// keycode_enemy == 99 --> enemy is not going to move during this player move
 		else
-			ft_next_enemy_position(game, p);
+			ft_next_enemy_position(game, p);		// save enemy last & next position (y & x)
 		p++;
 	}
 }

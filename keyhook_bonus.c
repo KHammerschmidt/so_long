@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 17:29:32 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/22 22:55:57 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/24 14:39:18 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ prints the respective WINNER/LOOSER message on the window. */
 void	ft_game_over(t_struct *so_long)
 {
 	so_long->player.still_playing++;
-	if (so_long->keyboard == KEY_A || so_long->keyboard == KEY_S
-		|| so_long->keyboard == KEY_D || so_long->keyboard == KEY_W)
-		so_long->player.number_of_moves++;
+	// if (so_long->keyboard == KEY_A || so_long->keyboard == KEY_S
+	// 	|| so_long->keyboard == KEY_D || so_long->keyboard == KEY_W)
+	// so_long->player.number_of_moves++;
 	ft_build_map(so_long);
 	if (so_long->game.counter_collectible != 0
 		|| so_long->player.enemy_flag == 99)

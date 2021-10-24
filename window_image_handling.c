@@ -6,12 +6,14 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:01:05 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/22 23:03:44 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/24 15:05:10 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/* Memory area for all mlx files regarding the player is allocated and the
+respective img-index linked the the xpm file. */
 void	ft_load_player_images(t_struct *so_long)
 {
 	so_long->img[4] = ft_calloc(1, sizeof(t_img));
@@ -28,8 +30,8 @@ void	ft_load_player_images(t_struct *so_long)
 			&(so_long->img[7]->width), &(so_long->img[7]->height));
 }
 
-/* Memory area is allocated for every mlx_file. The corresponding img-array is
-linked to the xpm_file. */
+/* Memory area for mlx files is allocated and the respective img-index linked
+the the xpm file. */
 void	ft_load_images(t_struct *so_long)
 {
 	so_long->img[0] = ft_calloc(1, sizeof(t_img));

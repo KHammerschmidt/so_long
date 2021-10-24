@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 14:35:10 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/22 23:09:29 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/24 14:58:27 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@
 # define IMG_W_WEST "./images/W_WEST.xpm"
 # define IMG_D_EAST "./images/D_EAST.xpm"
 # define IMG_D_WEST "./images/D_WEST.xpm"
-# define IMG_ENEMY "./images/Enemy_Snowman.xpm"
+# define IMG_ENEMY "./images/Enemy.xpm"
+# define IMG_ICE_TILE "./images/Tile_IceBox.xpm"
 
 /* Struct 'xpm' for MiniLibX window and image handling */
 typedef struct s_vars
@@ -96,7 +97,7 @@ typedef struct s_player
 typedef struct s_struct
 {
 	t_vars		vars;
-	t_img		*img[9];
+	t_img		*img[10];
 	t_img		xpm;
 	t_map		game;
 	t_player	player;
@@ -120,6 +121,7 @@ void	ft_game_instructions(t_struct *so_long);
 void	ft_image_handling(t_struct *so_long);
 void	ft_load_images(t_struct *so_long);
 void	ft_load_player_images(t_struct *so_long);
+void	ft_print_moves_on_screen(t_struct *so_long);
 
 /* Functions to read, allocate and define map, e.g. the gamefiled */
 void	ft_map_init(t_struct *so_long);
@@ -168,10 +170,11 @@ void	ft_enemy_movement(t_map *game);
 int		ft_generate_e_move(t_map *game, int p);
 void	ft_enemy_position(t_struct *so_long, int i);
 void	ft_change_enemy_position(t_map *game, int p);
-int		ft_check_enemy_collision(t_struct *so_long);
+// int		ft_check_enemy_collision(t_struct *so_long, int j, int i);
 void	ft_read_enemy_positions(t_struct *so_long);
 void	ft_enemy_position(t_struct *so_long, int i);
 void	ft_update_map_enemy(t_map *game, int p, int t, int s);
+int	ft_check_enemy_collision(t_struct *so_long);
 
 int	ft_check_e_move_west(t_map *game, int p);
 int	ft_check_e_move_south(t_map *game, int p);

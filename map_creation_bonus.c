@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:32:35 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/19 18:50:33 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/24 08:36:25 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_read_map_grid(char *file, t_struct *so_long)
 		ft_close(so_long);
 	while (horizontal_line != NULL && y < so_long->game.map_height)
 	{
-			horizontal_line = get_next_line(fd);
+		horizontal_line = get_next_line(fd);
 		x = 0;
 		while (x < so_long->game.map_width)
 		{
@@ -69,7 +69,7 @@ int	ft_allocate_map_memory(t_struct *so_long)
 
 	i = 0;
 	so_long->game.map = (char **)ft_calloc(so_long->game.map_height,
-		sizeof(char *));
+			sizeof(char *));
 	if (so_long->game.map == NULL)
 	{
 		ft_putstr_fd("Error\nAllocation failed!\n", 1);
@@ -78,7 +78,7 @@ int	ft_allocate_map_memory(t_struct *so_long)
 	while (i < so_long->game.map_height)
 	{
 		so_long->game.map[i] = (char *)ft_calloc(so_long->game.map_width,
-			sizeof(char));
+				sizeof(char));
 		if (so_long->game.map[i] == NULL)
 		{
 			ft_putstr_fd("Error\nAllocation failed!\n", 1);

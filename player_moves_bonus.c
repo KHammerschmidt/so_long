@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 19:41:50 by katharinaha       #+#    #+#             */
-/*   Updated: 2021/10/22 22:06:04 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/24 14:40:05 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,12 @@ int	ft_check_p_move(t_struct *so_long, int j, int i)
 	|| (so_long->keyboard == KEY_W && so_long->game.map[j - 1][i] != '1'))
 	{
 		ft_enemy_movement(&so_long->game);
-		if ((so_long->keyboard == KEY_D && so_long->game.map[j][i + 1] == 'G')
-		|| (so_long->keyboard == KEY_A && so_long->game.map[j][i - 1] == 'G')
-		|| (so_long->keyboard == KEY_S && so_long->game.map[j + 1][i] == 'G')
-		|| (so_long->keyboard == KEY_W && so_long->game.map[j - 1][i] == 'G'))
-		{
-			printf("On this position is an enemy!\n");
-			so_long->player.enemy_flag = 99;
-		}
 		if ((so_long->keyboard == KEY_D && so_long->game.map[j][i + 1] == 'C')
 		|| (so_long->keyboard == KEY_A && so_long->game.map[j][i - 1] == 'C')
 		|| (so_long->keyboard == KEY_S && so_long->game.map[j + 1][i] == 'C')
 		|| (so_long->keyboard == KEY_W && so_long->game.map[j - 1][i] == 'C'))
 			so_long->game.counter_collectible--;
 		so_long->player.number_of_moves++;
-		if (so_long->player.enemy_flag == 99)
-			return (-1);
 		ft_change_position(so_long, j, i);
 	}
 	return (0);
@@ -67,28 +57,36 @@ a return value of -1. */
 int	ft_check_enemy_collision(t_struct *so_long)
 {
 	int	p;
+	int	y_p_last;
+	int	x_p_last;
 
 	p = 0;
+	y_p_last = so_long->player.player_position_last_y;
+	x_p_last = so_long->player.player_position_last_x;
 	while (p < so_long->game.counter_enemy)
 	{
-		if (so_long->player.player_position_y == so_long->game.e_pos_y[p]
-		&& so_long->player.player_position_x == so_long->game.e_pos_x[p])
-			so_long->player.enemy_flag = 99;
-		if (so_long->player.player_position_y == so_long->game.e_pos_y_last[p]
-		&& so_long->player.player_position_x == so_long->game.e_pos_x_last[p])
+		if (so_long->player.player_position_last_y == so_long->game.e_pos_y[p]
+		&& so_long->player.player_position_last_x == so_long->game.e_pos_x[p])
 		{
-			if (so_long->player.player_position_last_y == so_long->game.e_pos_y[p]
-				&& so_long->player.player_position_last_x == so_long->game.e_pos_x[p])
+			if (so_long->player.player_position_y == so_long->game.e_pos_y_last[p]
+			&& so_long->player.player_position_x == so_long->game.e_pos_x_last[p])
 			{
+				so_long->game.map[y_p_last][x_p_last] = 'P';
 				so_long->game.map[so_long->player.player_position_y][so_long->player.player_position_x] = 'G';
-				so_long->game.map[so_long->player.player_position_last_y][so_long->player.player_position_last_x] = 'P';
-					so_long->player.enemy_flag = 99;
+				so_long->player.enemy_flag = 99;
+				return (-1);
 			}
+		}
+		if (so_long->player.player_position_x == so_long->game.e_pos_x[p]
+		&& so_long->player.player_position_y == so_long->game.e_pos_y[p])
+		{
+			so_long->game.map[so_long->player.player_position_y][so_long->player.player_position_x] = 'P';
+			so_long->game.map[so_long->game.e_pos_y_last[p]][so_long->game.e_pos_x_last[p]] = 'G';
+			so_long->player.enemy_flag = 99;
+			return (-1);
 		}
 		p++;
 	}
-	if (so_long->player.enemy_flag == 99)
-		return (-1);
 	return (0);
 }
 
@@ -104,27 +102,10 @@ int	ft_check_game_over(t_struct *so_long, int j, int i)
 	return (0);
 }
 
-/* Test if keycode input represents valid movement with keys A, S, D & W
-and save the last direction the player is facing. */
-int	ft_save_keycode_move(int keycode, t_struct *so_long)
-{
-	if (keycode == KEY_A || keycode == KEY_S || keycode == KEY_W
-		|| keycode == KEY_D)
-		{
-			so_long->keyboard = keycode;
-			if (so_long->keyboard == KEY_D)
-				so_long->keyboard_last = KEY_D;
-			if (so_long->keyboard == KEY_A)
-				so_long->keyboard_last = KEY_A;
-			return (0);
-		}
-	return (-1);
-}
-
-/* The player's position is saved in j & i and the position the player is facing,
-saved in so_long->keyboard_last. The function tests if the player moves into an
-exit (ft_check_game_over()), if the player can move into the direction
-(ft_check_p_move()) and if the player collides with an enemy
+/* The player's position is saved in j & i and the position the player is
+facing, saved in so_long->keyboard_last. The function tests if the player
+moves into an exit (ft_check_game_over()), if the player can move into the
+direction (ft_check_p_move()) and if the player collides with an enemy
 (ft_check_enemy_collision()). In these cases a -1 is returned which triggers
 ft_game_over(), otherwise the map is rebuilt and 0 returned. */
 int	ft_move(t_struct *so_long, int keycode)
@@ -132,40 +113,26 @@ int	ft_move(t_struct *so_long, int keycode)
 	int	j;
 	int	i;
 
-	if (ft_save_keycode_move(keycode, so_long) == 0)			//valid input keycode
+	if (keycode == KEY_A || keycode == KEY_S || keycode == KEY_W
+		|| keycode == KEY_D)
 	{
+		so_long->keyboard = keycode;
+		if (so_long->keyboard == KEY_D)
+			so_long->keyboard_last = KEY_D;
+		if (so_long->keyboard == KEY_A)
+			so_long->keyboard_last = KEY_A;
 		j = so_long->player.player_position_y;
 		i = so_long->player.player_position_x;
-		if (ft_check_game_over(so_long, j, i) == -1)			//next move is into 'E"
+		if (ft_check_game_over(so_long, j, i) == -1
+		|| ft_check_p_move(so_long, j, i) == -1
+		|| ft_check_enemy_collision(so_long) == -1)
 			return (-1);
-		if (ft_check_p_move(so_long, j, i) == 0)				//is there a wall? is there a "G" or 'C'?
-		{
-			if (ft_check_enemy_collision(so_long) == (-1))
-				return (-1);
-			ft_build_map(so_long);
-		}
-		else
-			return (-1);
+		ft_build_map(so_long);
 	}
 	return (0);
 }
 
-
-
-
-		// if (so_long->game.e_pos_y_last = so_long->player.player_position_last_y
-		// && so_long->game.e_pos_x_last = so_long->player.player_position_last_x)
-		// (so_long->player.player_position_y == so_long->game.e_pos_y[p]
-		// && so_long->player.player_position_x == so_long->game.e_pos_x[p])
-		// {
-		// 	printf("player moves into enemy!\n");
-		// 	so_long->player.enemy_flag = 99;
-		// }
-		// if ((so_long->game.e_pos_y[p] == so_long->player.player_position_last_y
-		// && so_long->game.e_pos_x[p] == so_long->player. player_position_last_x)
-		// && so_long->game.e_pos_y_last[p] == so_long->player.player_position_y
-		// && so_long->game.e_pos_y_last[p] == so_long->player.player_position_x)
-		// 	{
-		// 	printf("player and enemy move into each other!\n");
-		// 	so_long->player.enemy_flag = 99;
-		// }
+		// if (ft_check_p_move(so_long, j, i) == -1)
+		// 	return (-1);
+		// if (ft_check_enemy_collision(so_long) == -1)
+		// 	return (-1);
