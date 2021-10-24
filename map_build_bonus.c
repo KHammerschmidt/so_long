@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:34:56 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/24 15:10:57 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/24 21:21:38 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_img	*ft_sprite_animation_still_playing(t_struct *so_long)
 /* If the game ends, this function differentiates between a winning player
 or a loosing one and returns the player alive or dead, facing in the
 direction of the last movement. */
-t_img	*ft_sprite_animation_not_playing(t_struct *so_long)
+t_img	*ft_sprite_animation_not_playing(t_struct *so_long, int y, int x)
 {
 	if (so_long->game.counter_collectible == 0)
 	{
@@ -46,7 +46,6 @@ t_img	*ft_sprite_animation_not_playing(t_struct *so_long)
 	else if (so_long->game.counter_collectible != 0
 		|| so_long->player.enemy_flag == 99)
 	{
-
 		if (so_long->keyboard == KEY_A)
 			return (so_long->img[7]->img);
 		else if (so_long->keyboard == KEY_D)
@@ -67,20 +66,11 @@ void	*ft_which_img(t_struct *so_long, int x, int y)
 	if (so_long->game.map[y][x] == 'P')
 	{
 		if (so_long->keyboard == 99)
-		{
-			printf("Test 6\n");
 			return (so_long->img[4]->img);
-		}
 		if (so_long->player.still_playing == 0)
-		{
-			printf("Test 7\n");
 			return (ft_sprite_animation_still_playing(so_long));
-		}
 		if (so_long->player.still_playing == 1 || so_long->player.enemy_flag == 99)
-		{
-			printf("Test 8\n");
-			return (ft_sprite_animation_not_playing(so_long));
-		}
+			return (ft_sprite_animation_not_playing(so_long, y, x));
 	}
 	if (so_long->game.map[y][x] == 'G')
 		return (so_long->img[8]->img);
@@ -114,10 +104,6 @@ void	ft_build_map(t_struct *so_long)
 				mlx_put_image_to_window(so_long->vars.mlx,
 					so_long->vars.mlx_win, so_long->img[0]->img,
 					so_long->vars.img_size * x, so_long->vars.img_size * y);
-			// if (so_long->player.still_playing != 0)
-			// 	mlx_put_image_to_window(so_long->vars.mlx,
-			// 		so_long->vars.mlx_win, so_long->img[9]->img,
-			// 		so_long->vars.img_size * x, so_long->vars.img_size * y);
 			mlx_put_image_to_window(so_long->vars.mlx, so_long->vars.mlx_win,
 				ft_which_img(so_long, x, y), so_long->vars.img_size * x,
 				so_long->vars.img_size * y);

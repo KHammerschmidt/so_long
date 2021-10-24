@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 19:45:37 by katharinaha       #+#    #+#             */
-/*   Updated: 2021/10/24 15:04:26 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/24 20:29:49 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_free_images(t_struct *so_long)
 	int	i;
 
 	i = 0;
-	while (i < 10)
+	while (i < 9)
 	{
 		mlx_destroy_image(so_long->vars.mlx, so_long->img[i]->img);
 		free(so_long->img[i]);

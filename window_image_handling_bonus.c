@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:05:21 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/24 15:08:07 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/24 20:29:18 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	ft_load_images(t_struct *so_long)
 	so_long->img[8] = ft_calloc(1, sizeof(t_img));
 	so_long->img[8]->img = mlx_xpm_file_to_image(so_long->vars.mlx, IMG_ENEMY,
 			&(so_long->img[8]->width), &(so_long->img[8]->height));
-	so_long->img[9] = ft_calloc(1, sizeof(t_img));
-	so_long->img[9]->img = mlx_xpm_file_to_image(so_long->vars.mlx, IMG_ICE_TILE,
-			&(so_long->img[9]->width), &(so_long->img[9]->height));
+	// so_long->img[9] = ft_calloc(1, sizeof(t_img));
+	// so_long->img[9]->img = mlx_xpm_file_to_image(so_long->vars.mlx, IMG_ICE_TILE,
+	// 		&(so_long->img[9]->width), &(so_long->img[9]->height));
 	ft_load_player_images(so_long);
 }
 
@@ -67,12 +67,10 @@ void	ft_game_instructions(t_struct *so_long)
 
 void	ft_image_handling(t_struct *so_long)
 {
-	printf("Test 3\n");
 	so_long->vars.mlx_win = mlx_new_window(so_long->vars.mlx,
 			so_long->vars.window_width, so_long->vars.window_height,
 			GAME_TITLE);
 	ft_load_images(so_long);
-	printf("Test 4\n");
 	ft_build_map(so_long);
 	printf("Test 5\n");
 	ft_game_instructions(so_long);

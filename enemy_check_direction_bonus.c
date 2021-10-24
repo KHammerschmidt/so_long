@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 22:21:21 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/24 11:49:16 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/24 21:27:53 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,74 +83,3 @@ int	ft_check_e_move_north(t_map *game, int p)
 	game->keycode_enemy[p] = KEY_W;
 	return (0);
 }
-
-
-
-	// printf("comparing enemy: %d --- [%d][%d]\n", p, game->e_pos_y[p], game->e_pos_x[p]);
-	// while (i < game->counter_enemy)
-	// {
-	// 	if ((game->map[t][s - 1] == 'G')
-	// 		return (-1);
-	// 	if (game->e_pos_y[p] == game->e_pos_y[i]
-	// 		&& game->e_pos_x[p] == game->e_pos_x[i])
-	// 		{
-	// 			printf("WEST ENEMYS!\n");
-	// 			printf("with enemy: %d --- [%d][%d]\n", i, game->e_pos_y[i], game->e_pos_x[i]);
-	// 			return (-1);
-	// 		}
-	// 	printf("with enemy: %d --- [%d][%d]\n", i, game->e_pos_y[i], game->e_pos_x[i]);
-	// 	i++;
-	// 	if (i == p)
-	// 		i++;
-	// }
-
-
-		// printf("comparing enemy: %d --- [%d][%d]\n", p, game->e_pos_y[p], game->e_pos_x[p]);
-	// while (i < game->counter_enemy)
-	// {
-	// 	if (game->e_pos_y[p] == game->e_pos_y[i]
-	// 		&& game->e_pos_x[p] == game->e_pos_x[i])
-	// 		{
-	// 			printf("SOUTH ENEMYS!\n");
-	// 			printf("with enemy: %d --- [%d][%d]\n", i, game->e_pos_y[i], game->e_pos_x[i]);
-	// 			return (-1);
-	// 		}
-	// 	printf("with enemy: %d --- [%d][%d]\n", i, game->e_pos_y[i], game->e_pos_x[i]);
-	// 	i++;
-	// 	if (i == p)
-	// 		i++;
-	// }
-
-
-		// printf("comparing enemy: %d --- [%d][%d]\n", p, game->e_pos_y[p], game->e_pos_x[p]);
-	// while (i < game->counter_enemy)
-	// {
-	// 	if (game->e_pos_y[p] == game->e_pos_y[i]
-	// 		&& game->e_pos_x[p] == game->e_pos_x[i]
-	// 		{
-	// 			printf("East ENEMYS!\n");
-	// 			printf("with enemy: %d --- [%d][%d]\n", i, game->e_pos_y[i], game->e_pos_x[i]);
-	// 			return (-1);
-	// 		}
-	// 	printf("with enemy: %d --- [%d][%d]\n", i, game->e_pos_y[i], game->e_pos_x[i]);
-	// 	i++;
-	// 	if (i == p)
-	// 		i++;
-	// }
-
-
-		// printf("comparing enemy: %d --- [%d][%d]\n", p, game->e_pos_y[p], game->e_pos_x[p]);
-	// while (i < game->counter_enemy)
-	// {
-	// 	if (game->e_pos_y[p] == game->e_pos_y[i]
-	// 		&& game->e_pos_x[p] == game->e_pos_x[i])
-	// 		{
-	// 			printf("NORTH ENEMYS!\n");
-	// 			printf("with enemy: %d --- [%d][%d]\n", i, game->e_pos_y[i], game->e_pos_x[i]);
-	// 			return (-1);
-	// 		}
-	// 	printf("with enemy: %d --- [%d][%d]\n", i, game->e_pos_y[i], game->e_pos_x[i]);
-	// 	i++;
-	// 	if (i == p)
-	// 		i++;
-	// }

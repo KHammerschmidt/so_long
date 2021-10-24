@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 14:35:10 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/24 14:58:27 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/24 21:46:27 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@
 # define IMG_W_WEST "./images/W_WEST.xpm"
 # define IMG_D_EAST "./images/D_EAST.xpm"
 # define IMG_D_WEST "./images/D_WEST.xpm"
-# define IMG_ENEMY "./images/Enemy.xpm"
-# define IMG_ICE_TILE "./images/Tile_IceBox.xpm"
+# define IMG_ENEMY "./images/SnowMan.xpm"
+// # define IMG_ICE_TILE "./images/Tile_IceBox.xpm"
 
 /* Struct 'xpm' for MiniLibX window and image handling */
 typedef struct s_vars
@@ -97,7 +97,7 @@ typedef struct s_player
 typedef struct s_struct
 {
 	t_vars		vars;
-	t_img		*img[10];
+	t_img		*img[9];
 	t_img		xpm;
 	t_map		game;
 	t_player	player;
@@ -180,5 +180,8 @@ int	ft_check_e_move_west(t_map *game, int p);
 int	ft_check_e_move_south(t_map *game, int p);
 int	ft_check_e_move_east(t_map *game, int p);
 int	ft_check_e_move_north(t_map *game, int p);
+
+void	ft_odd_nbrs(t_map *game, int p, int t, int s);
+void	ft_even_nbrs(t_map *game, int p, int t, int s);
 
 #endif
