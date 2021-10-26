@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:05:21 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/24 20:29:18 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:25:25 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	ft_image_handling(t_struct *so_long)
 			GAME_TITLE);
 	ft_load_images(so_long);
 	ft_build_map(so_long);
-	printf("Test 5\n");
 	ft_game_instructions(so_long);
 	ft_print_moves_on_screen(so_long);
 }

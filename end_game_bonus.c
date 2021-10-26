@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 19:45:37 by katharinaha       #+#    #+#             */
-/*   Updated: 2021/10/24 20:29:49 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:59:26 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_free_images(t_struct *so_long)
 	}
 }
 
-/* Frees memory area used to save gamefield in 2D array. */
+/* Frees memory area allocated to the 2D gamefield. */
 void	ft_free_gamefield(t_struct *so_long)
 {
 	int	y;
@@ -49,22 +49,23 @@ void	ft_free_gamefield(t_struct *so_long)
 	}
 }
 
+/* Frees memory area allocated to pointer of enemies. */
 void	ft_free_enemies(t_map *game)
 {
 	free (game->e_pos_x);
 	game->e_pos_x = NULL;
 	free (game->e_pos_y);
 	game->e_pos_y = NULL;
-	free (game->e_pos_x_last);
-	game->e_pos_x_last = NULL;
-	free (game->e_pos_y_last);
-	game->e_pos_y_last = NULL;
-	free (game->keycode_enemy);
-	game->keycode_enemy = NULL;
+	// free (game->e_pos_x_last);
+	// game->e_pos_x_last = NULL;
+	// free (game->e_pos_y_last);
+	// game->e_pos_y_last = NULL;
+	// free (game->keycode_enemy);
+	// game->keycode_enemy = NULL;
 }
 
-/* Called when the game is over to free all memory area (images, gamefield
-and struct t_enemy) and close the game. */
+/* Called when the game is over to free all memory area (images,
+gamefield and enemy-variables) and close the game. */
 int	ft_close(t_struct *so_long)
 {
 	if (so_long->img[0])

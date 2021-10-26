@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 09:37:19 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/24 08:33:28 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/26 12:01:59 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ void	ft_player_position(t_struct *so_long)
 	}
 }
 
-/* Initialies all variables to start the game, saves the player's position,
-allocates memory space for struct t_enemy and saves the respective enemy
-positions. */
+/* Initialies all variables to start the game, saves the player's position. */
 void	ft_game_init(t_struct *so_long)
 {
 	int	p;

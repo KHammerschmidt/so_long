@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:14:08 by katharinaha       #+#    #+#             */
-/*   Updated: 2021/10/19 19:21:59 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/26 11:59:40 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	ft_free_gamefield(t_struct *so_long)
 	}
 }
 
-/* Called when the game is over to free all memory area (images, gamefield
-and struct t_enemy) and close the game. */
+/* Called when the game is over to free all memory area (images and
+gamefield) and close the game. */
 int	ft_close(t_struct *so_long)
 {
 	if (so_long->img[0])

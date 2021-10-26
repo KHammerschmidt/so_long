@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 09:37:19 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/22 22:54:28 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/26 12:26:55 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_e_memory_allocation(t_map *game)
 	game->e_pos_y = ft_calloc(game->counter_enemy + 1, (sizeof(int)));
 	game->e_pos_x_last = ft_calloc(game->counter_enemy + 1, (sizeof(int)));
 	game->e_pos_y_last = ft_calloc(game->counter_enemy + 1, (sizeof(int)));
-	game->keycode_enemy = ft_calloc((game->counter_enemy + 1), (sizeof(int)));
+	// game->keycode_enemy = ft_calloc((game->counter_enemy + 1), (sizeof(int)));
 }
 
 /* Loops through 2D array to detect the position of player (x & y). */
@@ -79,7 +79,7 @@ void	ft_player_position(t_struct *so_long)
 }
 
 /* Initialies all variables to start the game, saves the player's position,
-allocates memory space for struct t_enemy and saves the respective enemy
+allocates memory space for enemy pointer and saves the respective enemy
 positions. */
 void	ft_game_init(t_struct *so_long)
 {

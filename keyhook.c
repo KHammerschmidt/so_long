@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 17:29:32 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/24 08:30:25 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/26 12:03:44 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	ft_game_over(t_struct *so_long)
 }
 
 /* Closes and frees all necessities when ESC, Q or red X are pressed, calls
-ft_enemy_movement() and ft_move() while the player is still playing for
-player movement/ending the game. Then it prints the moves on the window by
-calling ft_print_moves_on_screen(). */
+ft_move() while the player is still playing for player movement and ending the
+game when necessary. For every move the game instructions are being printed on
+the screen. */
 int	key_hook(int keycode, t_struct *so_long)
 {
 	so_long->keyboard = keycode;
