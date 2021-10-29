@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:05:21 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/26 11:25:25 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/29 16:53:16 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,6 @@ void	ft_load_images(t_struct *so_long)
 	so_long->img[8] = ft_calloc(1, sizeof(t_img));
 	so_long->img[8]->img = mlx_xpm_file_to_image(so_long->vars.mlx, IMG_ENEMY,
 			&(so_long->img[8]->width), &(so_long->img[8]->height));
-	// so_long->img[9] = ft_calloc(1, sizeof(t_img));
-	// so_long->img[9]->img = mlx_xpm_file_to_image(so_long->vars.mlx, IMG_ICE_TILE,
-	// 		&(so_long->img[9]->width), &(so_long->img[9]->height));
 	ft_load_player_images(so_long);
 }
 

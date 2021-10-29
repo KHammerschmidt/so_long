@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 09:37:19 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/26 12:26:55 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/29 17:02:27 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	ft_e_memory_allocation(t_map *game)
 	game->e_pos_y = ft_calloc(game->counter_enemy + 1, (sizeof(int)));
 	game->e_pos_x_last = ft_calloc(game->counter_enemy + 1, (sizeof(int)));
 	game->e_pos_y_last = ft_calloc(game->counter_enemy + 1, (sizeof(int)));
-	// game->keycode_enemy = ft_calloc((game->counter_enemy + 1), (sizeof(int)));
 }
 
 /* Loops through 2D array to detect the position of player (x & y). */

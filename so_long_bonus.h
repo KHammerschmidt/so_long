@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 14:35:10 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/26 11:17:41 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/29 17:01:31 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@
 # define IMG_D_EAST "./images/D_EAST.xpm"
 # define IMG_D_WEST "./images/D_WEST.xpm"
 # define IMG_ENEMY "./images/SnowMan.xpm"
-// # define IMG_ICE_TILE "./images/Tile_IceBox.xpm"
 
 /* Struct 'xpm' for MiniLibX window and image handling */
 typedef struct s_vars
@@ -166,22 +165,13 @@ void	ft_free_gamefield(t_struct *so_long);
 
 /* Functions to handle the random enemy movement. */
 void	ft_e_memory_allocation(t_map *game);
-void	ft_enemy_movement(t_map *game);
-// int		ft_generate_e_move(t_map *game, int p);
+int		ft_enemy_movement(t_map *game);
 void	ft_enemy_position(t_struct *so_long, int i);
 void	ft_change_enemy_position(t_map *game, int p);
-// int		ft_check_enemy_collision(t_struct *so_long, int j, int i);
 void	ft_read_enemy_positions(t_struct *so_long);
 void	ft_enemy_position(t_struct *so_long, int i);
 void	ft_update_map_enemy(t_map *game, int p, int t, int s);
-// int	ft_check_enemy_collision(t_struct *so_long);
-
-// int	ft_check_e_move_west(t_map *game, int p);
-// int	ft_check_e_move_south(t_map *game, int p);
-// int	ft_check_e_move_east(t_map *game, int p);
-// int	ft_check_e_move_north(t_map *game, int p);
-
-void	ft_odd_nbrs(t_map *game, int p, int t, int s);
-void	ft_even_nbrs(t_map *game, int p, int t, int s);
+int		ft_odd_nbrs(t_map *game, int p, int t, int s);
+int		ft_even_nbrs(t_map *game, int p, int t, int s);
 
 #endif

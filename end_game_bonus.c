@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 19:45:37 by katharinaha       #+#    #+#             */
-/*   Updated: 2021/10/26 11:59:26 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/29 17:01:54 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,6 @@ void	ft_free_enemies(t_map *game)
 	game->e_pos_x = NULL;
 	free (game->e_pos_y);
 	game->e_pos_y = NULL;
-	// free (game->e_pos_x_last);
-	// game->e_pos_x_last = NULL;
-	// free (game->e_pos_y_last);
-	// game->e_pos_y_last = NULL;
-	// free (game->keycode_enemy);
-	// game->keycode_enemy = NULL;
 }
 
 /* Called when the game is over to free all memory area (images,

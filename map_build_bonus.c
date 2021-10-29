@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:34:56 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/24 21:21:38 by khammers         ###   ########.fr       */
+/*   Updated: 2021/10/29 17:03:34 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	*ft_which_img(t_struct *so_long, int x, int y)
 			return (so_long->img[4]->img);
 		if (so_long->player.still_playing == 0)
 			return (ft_sprite_animation_still_playing(so_long));
-		if (so_long->player.still_playing == 1 || so_long->player.enemy_flag == 99)
+		if (so_long->player.still_playing == 1
+			|| so_long->player.enemy_flag == 99)
 			return (ft_sprite_animation_not_playing(so_long, y, x));
 	}
 	if (so_long->game.map[y][x] == 'G')

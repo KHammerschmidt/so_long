@@ -6,7 +6,7 @@
 #    By: khammers <khammers@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/22 14:33:38 by khammers          #+#    #+#              #
-#    Updated: 2021/10/26 11:47:42 by khammers         ###   ########.fr        #
+#    Updated: 2021/10/29 17:05:30 by khammers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,13 +65,13 @@ $(LIBFT_OBJ):
 clean:
 	rm -f $(OBJECTS)
 	rm -f $(OBJECTS_B)
-# make clean -C ./srcs/libft
-# make clean -C ./srcs/mlx
+	make clean -C ./srcs/libft
+	make clean -C ./srcs/mlx
 
 fclean: clean
 	rm -f $(NAME)
 	rm -f $(BONUS_NAME)
-# make fclean -C ./srcs/libft
+	make fclean -C ./srcs/libft
 
 re: fclean all
 
