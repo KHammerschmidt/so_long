@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_moves_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katharinahammerschmidt <katharinahammer    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 19:41:50 by katharinaha       #+#    #+#             */
-/*   Updated: 2021/10/29 16:59:44 by khammers         ###   ########.fr       */
+/*   Updated: 2021/11/01 20:07:21 by katharinaha      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

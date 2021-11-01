@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_build.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
+/*   By: katharinahammerschmidt <katharinahammer    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:34:56 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/24 20:25:34 by khammers         ###   ########.fr       */
+/*   Updated: 2021/11/01 20:05:09 by katharinaha      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,7 @@ direction of the last movement. */
 t_img	*ft_sprite_animation_not_playing(t_struct *so_long)
 {
 	if (so_long->game.counter_collectible == 0)
-	{
-		if (so_long->keyboard == KEY_D)
-			return (so_long->img[4]->img);
-		else if (so_long->keyboard == KEY_A)
-			return (so_long->img[6]->img);
-		else if (so_long->keyboard_last == KEY_D)
-			return (so_long->img[4]->img);
-		else if (so_long->keyboard_last == KEY_A)
-			return (so_long->img[6]->img);
-	}
+		return (so_long->img[0]->img);
 	else if (so_long->game.counter_collectible != 0)
 	{
 		if (so_long->keyboard == KEY_A)
