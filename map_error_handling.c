@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 12:29:22 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/19 17:02:53 by khammers         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:31:09 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* Loop through 2D array 'map' and check if all outside characters represent a
 wall, respectively the character '1'. */
-int	ft_check_surrounding_walls(t_map *game)
+static int	ft_check_surrounding_walls(t_map *game)
 {
 	int	x;
 	int	y;
@@ -43,7 +43,7 @@ int	ft_check_surrounding_walls(t_map *game)
 /* Loop through 2D array 'map' and check if all necessary characters appear.
 At least 1 starting position, 1 exit and one collectible. If not return -1 which
 triggers an error message. */
-int	ft_check_necessary_map_characters(t_map *game)
+static int	ft_check_necessary_map_characters(t_map *game)
 {
 	int	x;
 	int	y;
@@ -72,7 +72,7 @@ int	ft_check_necessary_map_characters(t_map *game)
 
 /* Loop through 2D array 'map' and check if any forbidden characters
 exist besides '01PEGC'. */
-int	ft_check_forbidden_map_characters(t_map *game)
+static int	ft_check_forbidden_map_characters(t_map *game)
 {
 	int	x;
 	int	y;

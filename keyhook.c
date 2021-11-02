@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 17:29:32 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/26 12:03:44 by khammers         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:29:53 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* When the game is over (player entered exit or an enemy is hit) this function
 counts the player moves for the last time, rebuilds the map and prints the
 respective WINNER/LOOSER message on the window. */
-void	ft_game_over(t_struct *so_long)
+static void	ft_game_over(t_struct *so_long)
 {
 	so_long->player.still_playing++;
 	ft_count_player_moves(so_long);

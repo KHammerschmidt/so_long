@@ -6,13 +6,13 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 23:05:21 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/29 16:53:16 by khammers         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:32:28 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	ft_load_player_images(t_struct *so_long)
+static void	ft_load_player_images(t_struct *so_long)
 {
 	so_long->img[4] = ft_calloc(1, sizeof(t_img));
 	so_long->img[4]->img = mlx_xpm_file_to_image(so_long->vars.mlx, IMG_W_EAST,
@@ -30,7 +30,7 @@ void	ft_load_player_images(t_struct *so_long)
 
 /* Memory area is allocated for every mlx_file. The corresponding img-array is
 linked to the xpm_file. */
-void	ft_load_images(t_struct *so_long)
+static void	ft_load_images(t_struct *so_long)
 {
 	so_long->img[0] = ft_calloc(1, sizeof(t_img));
 	so_long->img[0]->img = mlx_xpm_file_to_image(so_long->vars.mlx,

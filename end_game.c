@@ -6,14 +6,14 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 16:14:08 by katharinaha       #+#    #+#             */
-/*   Updated: 2021/10/26 11:59:40 by khammers         ###   ########.fr       */
+/*   Updated: 2021/11/02 19:53:36 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 /* Frees memory area allocated to the game's images. */
-void	ft_free_images(t_struct *so_long)
+static void	ft_free_images(t_struct *so_long)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ void	ft_free_images(t_struct *so_long)
 }
 
 /* Frees memory area used to save gamefield in 2D array. */
-void	ft_free_gamefield(t_struct *so_long)
+static void	ft_free_gamefield(t_struct *so_long)
 {
 	int	y;
 

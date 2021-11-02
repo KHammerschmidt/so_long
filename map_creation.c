@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 10:32:35 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/24 08:35:46 by khammers         ###   ########.fr       */
+/*   Updated: 2021/11/02 20:04:54 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_map_init(t_struct *so_long)
 /* Reading the .ber file and saving each character in a designated coordinate
 system. Reading with a nested loop row per row for every column of .ber file.
 In between each gnl call the char * is freed. */
-void	ft_read_map_grid(char *file, t_struct *so_long)
+static void	ft_read_map_grid(char *file, t_struct *so_long)
 {
 	int			fd;
 	int long	x;
@@ -40,10 +40,7 @@ void	ft_read_map_grid(char *file, t_struct *so_long)
 	fd = open(file, O_RDONLY);
 	if (fd == -1 || fd == 0)
 		ft_close(so_long);
-	horizontal_line = ft_calloc(so_long->game.map_width + 1, sizeof(char));
-	if (!horizontal_line)
-		ft_close(so_long);
-	while (horizontal_line != NULL && y < so_long->game.map_height)
+	while (y < so_long->game.map_height)
 	{
 		horizontal_line = get_next_line(fd);
 		x = 0;
@@ -61,7 +58,7 @@ void	ft_read_map_grid(char *file, t_struct *so_long)
 /* Memory allocation happens first column-wise for char *, then for every
 row of the .ber file. If memory allocation fails an error message is printed
 and function ft_close() called. */
-int	ft_allocate_map_memory(t_struct *so_long)
+static int	ft_allocate_map_memory(t_struct *so_long)
 {
 	int	i;
 

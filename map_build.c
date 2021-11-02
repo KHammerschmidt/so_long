@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_build.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katharinahammerschmidt <katharinahammer    +#+  +:+       +#+        */
+/*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 17:34:56 by khammers          #+#    #+#             */
-/*   Updated: 2021/11/01 20:05:09 by katharinaha      ###   ########.fr       */
+/*   Updated: 2021/11/02 14:30:17 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* While the player is still playing this function returns the player facing
 in a direction, depending on the key pressed now and the previous one. */
-t_img	*ft_sprite_animation_still_playing(t_struct *so_long)
+static t_img	*ft_sprite_animation_still_playing(t_struct *so_long)
 {
 	if (so_long->keyboard == KEY_D)
 		return (so_long->img[4]->img);
@@ -30,7 +30,7 @@ t_img	*ft_sprite_animation_still_playing(t_struct *so_long)
 /* If the game ends, this function differentiates between a winning player
 or a loosing one and returns the player alive or dead, facing in the
 direction of the last movement. */
-t_img	*ft_sprite_animation_not_playing(t_struct *so_long)
+static t_img	*ft_sprite_animation_not_playing(t_struct *so_long)
 {
 	if (so_long->game.counter_collectible == 0)
 		return (so_long->img[0]->img);
@@ -51,7 +51,7 @@ t_img	*ft_sprite_animation_not_playing(t_struct *so_long)
 /* The IMG of the corresponding map character is returned to build the map.
 In case of a 'P' a sprite animation function is called, depending if the
 player is still playing or not, e.g. image = alive or dead player. */
-void	*ft_which_img(t_struct *so_long, int x, int y)
+static void	*ft_which_img(t_struct *so_long, int x, int y)
 {
 	if (so_long->game.map[y][x] == 'P')
 	{

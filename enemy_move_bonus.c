@@ -6,14 +6,14 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 19:54:45 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/29 16:50:11 by khammers         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:25:50 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
 /* Function to let enemy walk north-south. */
-int	ft_even_nbrs(t_map *game, int p, int t, int s)
+static int	ft_even_nbrs(t_map *game, int p, int t, int s)
 {
 	int	nbr_rd;
 	int	incr;
@@ -40,7 +40,7 @@ int	ft_even_nbrs(t_map *game, int p, int t, int s)
 }
 
 /* Function to let enemy walk east-west. */
-int	ft_odd_nbrs(t_map *game, int p, int t, int s)
+static int	ft_odd_nbrs(t_map *game, int p, int t, int s)
 {
 	int	nbr_rd;
 	int	incr;

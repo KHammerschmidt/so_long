@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 09:37:19 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/29 17:02:27 by khammers         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:29:18 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* Loops through 2D array and saves the position y and x for
 each enemy by incrementing the index p. */
-void	ft_read_enemy_positions(t_struct *so_long)
+static void	ft_read_enemy_positions(t_struct *so_long)
 {
 	int	x;
 	int	y;
@@ -44,7 +44,7 @@ void	ft_read_enemy_positions(t_struct *so_long)
 
 /* Allocates memory space for int * of enemies depending on how many
 enemies were counted in the map. */
-void	ft_e_memory_allocation(t_map *game)
+static void	ft_e_memory_allocation(t_map *game)
 {
 	game->e_pos_x = ft_calloc(game->counter_enemy + 1, (sizeof(int)));
 	game->e_pos_y = ft_calloc(game->counter_enemy + 1, (sizeof(int)));

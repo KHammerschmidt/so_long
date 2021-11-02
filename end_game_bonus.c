@@ -6,14 +6,14 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 19:45:37 by katharinaha       #+#    #+#             */
-/*   Updated: 2021/10/29 17:01:54 by khammers         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:25:32 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
 /* Frees memory area allocated to the game's images. */
-void	ft_free_images(t_struct *so_long)
+static void	ft_free_images(t_struct *so_long)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ void	ft_free_images(t_struct *so_long)
 }
 
 /* Frees memory area allocated to the 2D gamefield. */
-void	ft_free_gamefield(t_struct *so_long)
+static void	ft_free_gamefield(t_struct *so_long)
 {
 	int	y;
 
@@ -50,7 +50,7 @@ void	ft_free_gamefield(t_struct *so_long)
 }
 
 /* Frees memory area allocated to pointer of enemies. */
-void	ft_free_enemies(t_map *game)
+static void	ft_free_enemies(t_map *game)
 {
 	free (game->e_pos_x);
 	game->e_pos_x = NULL;

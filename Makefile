@@ -6,12 +6,12 @@
 #    By: khammers <khammers@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/22 14:33:38 by khammers          #+#    #+#              #
-#    Updated: 2021/10/29 17:05:30 by khammers         ###   ########.fr        #
+#    Updated: 2021/11/02 15:01:26 by khammers         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -L ./srcs/mlx -lmlx -L ./srcs/libft -lft -framework OpenGl -framework AppKit
+FLAGS = -g -Wall -Werror -Wextra -L ./srcs/mlx -lmlx -L ./srcs/libft -lft -framework OpenGl -framework AppKit
 
 SRC = main.c \
 	input_handling.c \
@@ -70,7 +70,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f $(BONUS_NAME)
+	rm -f $(NAME_B)
 	make fclean -C ./srcs/libft
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 16:16:37 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/24 21:22:49 by khammers         ###   ########.fr       */
+/*   Updated: 2021/11/02 20:01:17 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 	ft_game_init(&so_long);
 	ft_image_handling(&so_long);
 	mlx_hook(so_long.vars.mlx_win, 2, 0L, key_hook, &so_long);
+	system("leaks so_long");
 	mlx_hook(so_long.vars.mlx_win, 17, 1L << 2, ft_close, &so_long);
 	mlx_loop(so_long.vars.mlx);
 	return (0);

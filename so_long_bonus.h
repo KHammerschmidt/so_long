@@ -6,7 +6,7 @@
 /*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 14:35:10 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/29 17:01:31 by khammers         ###   ########.fr       */
+/*   Updated: 2021/11/02 14:44:59 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,8 @@
 
 # include "./srcs/mlx/mlx.h"
 # include "./srcs/libft/libft.h"
-
-# include <stdio.h>
 # include <stdlib.h>
-# include <stddef.h>
-# include <unistd.h>
 # include <fcntl.h>
-# include <stdlib.h>
 
 # define BUFFER_SIZE 1
 # define GAME_TITLE "SO_LONG_BONUS"
@@ -113,65 +108,62 @@ typedef struct s_struct
 # define KEY_Q 12
 # define KEY_ESC 0x35
 
-int		main(int argc, char **argv);
-int		ft_handle_input(int argc, char **argv);
-int		key_hook(int keycode, t_struct *so_long);
-void	ft_game_instructions(t_struct *so_long);
-void	ft_image_handling(t_struct *so_long);
-void	ft_load_images(t_struct *so_long);
-void	ft_load_player_images(t_struct *so_long);
-void	ft_print_moves_on_screen(t_struct *so_long);
+int			main(int argc, char **argv);
+int			ft_handle_input(int argc, char **argv);
+int			key_hook(int keycode, t_struct *so_long);
+
+/* Functions for image handling & printing text on window */
+void		ft_image_handling(t_struct *so_long);
+static void	ft_load_images(t_struct *so_long);
+static void	ft_load_player_images(t_struct *so_long);
+void		ft_game_instructions(t_struct *so_long);
+void		ft_print_moves_on_screen(t_struct *so_long);
 
 /* Functions to read, allocate and define map, e.g. the gamefiled */
-void	ft_map_init(t_struct *so_long);
-void	ft_define_map_size(char *file, t_struct *so_long);
-int		ft_allocate_map_memory(t_struct *so_long);
-void	ft_read_map_grid(char *file, t_struct *so_long);
+void		ft_map_init(t_struct *so_long);
+void		ft_define_map_size(char *file, t_struct *so_long);
+static int	ft_allocate_map_memory(t_struct *so_long);
+static void	ft_read_map_grid(char *file, t_struct *so_long);
 
 /* Functions for get_next_line with a BUFFER_SIZE=1  */
-char	*get_next_line(int fd);
-char	*ft_get_output(char **line);
-char	*ft_strnjoin(char *s1, char *s2, ssize_t bytes);
-char	*ft_update_char_output(char **line, ssize_t bytes);
-void	ft_free(char **char_stat);
+char		*get_next_line(int fd);
+static char	*ft_get_output(char **line);
+static char	*ft_strnjoin(char *s1, char *s2, ssize_t bytes);
+static char	*ft_update_char_output(char **line, ssize_t bytes);
+static void	ft_free(char **char_stat);
 
 /* Functions to check map specifications made by subject */
-int		ft_map_errors(t_struct *so_long);
-int		ft_check_necessary_map_characters(t_map *game);
-int		ft_check_forbidden_map_characters(t_map *game);
-int		ft_check_surrounding_walls(t_map *game);
+int			ft_map_errors(t_struct *so_long);
+static int	ft_check_necessary_map_characters(t_map *game);
+static int	ft_check_forbidden_map_characters(t_map *game);
+static int	ft_check_surrounding_walls(t_map *game);
 
 /* Functions for MiniLibX window and image handling */
-void	ft_load_images(t_struct *so_long);
-void	ft_build_map(t_struct *so_long);
-void	*ft_which_img(t_struct *so_long, int x, int y);
+void		ft_load_images(t_struct *so_long);
+void		ft_build_map(t_struct *so_long);
+static void	*ft_which_img(t_struct *so_long, int x, int y);
 
 /* Functions to move the player */
-int		ft_move(t_struct *so_long, int keycode);
-int		ft_check_game_over(t_struct *so_long, int j, int i);
-int		ft_check_p_move(t_struct *so_long, int j, int i);
-void	ft_change_position(t_struct *so_long, int j, int i);
-void	ft_count_player_moves(t_struct *so_long);
+int			ft_move(t_struct *so_long, int keycode);
+static int	ft_check_game_over(t_struct *so_long, int j, int i);
+static int	ft_check_p_move(t_struct *so_long, int j, int i);
+static void	ft_change_position(t_struct *so_long, int j, int i);
+void		ft_count_player_moves(t_struct *so_long);
 
 /* Functions to initialise variables */
-void	ft_game_init(t_struct *so_long);
-void	ft_player_position(t_struct *so_long);
+void		ft_game_init(t_struct *so_long);
+void		ft_player_position(t_struct *so_long);
 
 /* Functions to end the game */
-void	ft_game_over(t_struct *so_long);
-int		ft_close(t_struct *so_long);
-void	ft_free_images(t_struct *so_long);
-void	ft_free_gamefield(t_struct *so_long);
+static void	ft_game_over(t_struct *so_long);
+int			ft_close(t_struct *so_long);
+static void	ft_free_images(t_struct *so_long);
+static void	ft_free_gamefield(t_struct *so_long);
 
 /* Functions to handle the random enemy movement. */
-void	ft_e_memory_allocation(t_map *game);
-int		ft_enemy_movement(t_map *game);
-void	ft_enemy_position(t_struct *so_long, int i);
-void	ft_change_enemy_position(t_map *game, int p);
-void	ft_read_enemy_positions(t_struct *so_long);
-void	ft_enemy_position(t_struct *so_long, int i);
-void	ft_update_map_enemy(t_map *game, int p, int t, int s);
-int		ft_odd_nbrs(t_map *game, int p, int t, int s);
-int		ft_even_nbrs(t_map *game, int p, int t, int s);
+static void	ft_e_memory_allocation(t_map *game);
+int			ft_enemy_movement(t_map *game);
+static int		ft_odd_nbrs(t_map *game, int p, int t, int s);
+static int		ft_even_nbrs(t_map *game, int p, int t, int s);
 
 #endif

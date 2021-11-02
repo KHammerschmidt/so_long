@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: katharinahammerschmidt <katharinahammer    +#+  +:+       +#+        */
+/*   By: khammers <khammers@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/16 13:26:11 by khammers          #+#    #+#             */
-/*   Updated: 2021/10/18 20:27:01 by katharinaha      ###   ########.fr       */
+/*   Updated: 2021/11/02 20:05:59 by khammers         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_free(char **char_stat)
+static void	ft_free(char **char_stat)
 {
 	free(*char_stat);
 	*char_stat = NULL;
 }
 
-char	*ft_update_char_output(char **line, ssize_t bytes)
+static char	*ft_update_char_output(char **line, ssize_t bytes)
 {
 	char	*print;
 	int		i;
@@ -46,7 +46,7 @@ char	*ft_update_char_output(char **line, ssize_t bytes)
 	return (NULL);
 }
 
-char	*ft_strnjoin(char *s1, char *s2, ssize_t bytes)
+static char	*ft_strnjoin(char *s1, char *s2, ssize_t bytes)
 {
 	char	*strnw;
 	int		i;
@@ -71,7 +71,7 @@ char	*ft_strnjoin(char *s1, char *s2, ssize_t bytes)
 	return (strnw);
 }
 
-char	*ft_get_output(char **line)
+static char	*ft_get_output(char **line)
 {
 	int		i;
 	char	*print;
